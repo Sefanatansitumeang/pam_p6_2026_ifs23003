@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Web
         # Ganti pam_p6_2026_ifs23003 sesuai nama repo di gambar image_38ec1d.png
-        run: flutter build web --release --base-href /pam_p6_2026_ifs23003/
+        run: flutter build web --release --base-href /pam-p6-2026-ifs23003/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
