@@ -1,0 +1,29 @@
+name: pam-2026-p6-ifs23003
+
+on:
+  push:
+    branches: [ main ] # Pastikan nama branch utama Anda 'main', jika 'master' ganti jadi master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build Web
+        # Ganti pam_p6_2026_ifs23003 sesuai nama repo di gambar image_38ec1d.png
+        run: flutter build web --release --base-href /pam_p6_2026_ifs23003/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
